@@ -22,7 +22,7 @@ This is a working prototype built to search properties by address, fetch details
 - Calculate and display the FAR and estimated building height.
 
 ## 4. How to Use
-1. Enter an address in the search bar (e.g., "1053 LEXINGTON AVENUE, 10021").
+1. Enter an encoded  address in the search bar (e.g. 1055%20LEXINGTON%20AVENUE%2C%2010021).
 2. Click "Search."
 3. View the fetched property details and calculated results below the search bar.
 
