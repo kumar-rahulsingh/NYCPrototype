@@ -70,7 +70,7 @@ const PropertySearch = () => {
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          placeholder="Enter address (e.g., 93-08 DITMARS BOULEVARD, 11369)"
+          placeholder="Enter address "
           className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         />
         <button
