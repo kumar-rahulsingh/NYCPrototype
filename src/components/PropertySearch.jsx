@@ -6,22 +6,22 @@ const PropertySearch = () => {
   const [propertyData, setPropertyData] = useState(null);
   const [error, setError] = useState("");
 
-  // Using the Vite environment variable for the base API URL
+  
   const apiUrl = import.meta.env.VITE_API_BASE_URL_1;
 
-  // Function to fetch property data by address
+  
   const fetchPropertyData = async (searchAddress) => {
     try {
       setError("");
       setPropertyData(null);
 
-      // Encode the search address for the URL
+      
       const encodedAddress = encodeURIComponent(searchAddress);
       const searchUrl = `${apiUrl}/search?helpers[]=geosearch-v2&helpers[]=bbl&helpers[]=neighborhood&helpers[]=zoning-district&helpers[]=zoning-map-amendment&helpers[]=special-purpose-district&helpers[]=commercial-overlay&q=${encodedAddress}`;
 
       console.log("Fetching data from URL:", searchUrl);
 
-      // Step 1: Fetch the BBL from the search API
+      
       const response = await axios.get(searchUrl);
       console.log("API Response:", response.data);
 
@@ -39,7 +39,7 @@ const PropertySearch = () => {
       }
       console.log("Found BBL:", bbl);
 
-      // Step 2: Fetch property details using the BBL
+      
       const propertyUrl = `https://planninglabs.carto.com/api/v2/sql?q=SELECT address, bbl, bldgarea, lotarea, numfloors FROM dcp_mappluto WHERE bbl = '${bbl}'`;
       const propertyResponse = await axios.get(propertyUrl);
       const property = propertyResponse.data.rows[0];
@@ -98,7 +98,7 @@ const PropertySearch = () => {
             <strong>Number of Floors:</strong> {propertyData.numfloors}
           </p>
 
-          {/* Calculate FAR */}
+          
           {propertyData.bldgarea && propertyData.lotarea && (
             <p>
               <strong>FAR (Floor Area Ratio):</strong>{" "}
@@ -106,7 +106,7 @@ const PropertySearch = () => {
             </p>
           )}
 
-          {/* Calculate Estimated Building Height */}
+        
           {propertyData.numfloors && (
             <p>
               <strong>Estimated Building Height:</strong>{" "}
